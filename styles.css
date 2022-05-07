@@ -1,0 +1,103 @@
+
+    body{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-color: #0D1117;
+        color: #C9D1D9;
+    }
+    .note{
+        color: rgb(203, 43, 61);
+    }
+    .link{
+        font-size: x-small;
+    }
+    .img{
+        font-style: italic;
+    }
+    .tbl{
+        font-style: italic;
+        font-weight: bold;
+    }
+    path{
+        font-family: 'Consolas';
+        background-color: #3f2e2e;
+        border: 1px none;
+        border-radius: 8px;
+        padding: 1px 2px;
+    }
+    author{
+        color: #ffe884;
+    }
+    icode{
+        font-family: 'Consolas';
+        padding: 1px 2px;
+    }
+    icode2{
+        font-family: 'Consolas';
+        background-color: #2a2e35;
+        border: 1px none;
+        border-radius: 8px;
+        padding: 1px 2px;
+    }
+    .code{
+        background-color: #2a2e35;
+        border: 1px none;
+        border-radius: 8px;
+        padding: 1px 2px;
+    }
+
+    /* link stuff */
+    /* unvisited */
+    a:link {
+        color: #2D98FF;
+    }
+    /* visited */
+    a:visited {
+        color: #2968df;
+    }
+    /* mouse over */
+    a:hover {
+        color: #4fd6ff;
+    }
+    /* selected */
+    a:active {
+        color: #164caf;
+    }
+
+
+    table {
+        font-weight: normal;
+        border-collapse: collapse;
+        width:100%;
+    }
+
+    .defines-define{
+        width: 275px;
+        text-align: left;
+    }
+    .defines-ram{
+        width: 100px;
+        text-align: center;
+    }
+    .routines-io{
+        width: 250px;
+    }
+    .routines-macro{
+        width: 250px;
+    }
+
+    td, th {
+        border: 1px solid #acb3b9;
+        text-align: left;
+        font-weight: normal;
+        padding: 4px 6px;
+    }
+    th {
+        font-weight: bold;
+        background-color: #161B22;
+    }
+    div{
+        padding: 0px 4px;
+    }
+    li.nostyle {
+        list-style-type: none;
+    }

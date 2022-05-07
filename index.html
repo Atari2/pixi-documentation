@@ -1,0 +1,139 @@
+<meta property="og:type" content="website">
+<meta property="og:url" content="index.html">
+<meta property="og:title" content="Index | PIXI Documentation">
+<meta property="og:description" content="PIXI Documentation">
+<meta name="theme-color" content="#6868D8">
+<meta property="og:image" content="preview_thumbnail.png">
+<head>
+    <title>PIXI Documentation</title>
+        <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="top">
+        <h1>PIXI Documentation</h1>
+        <p>Created by JackTheSpades, further development support by various people. More details <a href="#credits">here</a></p>
+        <p>Current tool version: <b>1.32</b></p>
+        <p>Current documentation version: <b>1.0</b></p>
+        <hr>
+        <p>If you have any issues with the online version of the readme try using <b>Ctrl+F5</b>.</p>
+        <p>Disclaimer: This document was made by people whose first language isn't english, please understand if you spot some paragraphs or sections with poor wording in them. Thanks.</p>
+    </div>
+    <hr>
+    <div>
+        <h2>Documents</h2>
+        <p class="note">Most of them lead to WIP pages.</p>
+        <h3>For regular users</h3>
+        <ul>
+            <li><a href="usage/basic.html">Basic usage</a></li>
+            <li><a href="usage/advanced.html">Advanced usage</a></li>
+            <li><a href="usage/troubleshooting.html">Troubleshooting</a></li>
+            <li><a href="usage/developers.html">Developers information</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+        </ul>
+        <h3>For developers</h3>
+        <ul>
+            <li><a href="dev/sprites.html">Sprites</a></li>
+            <li><a href="dev/shooter.html">Shooters</a></li>
+            <li><a href="dev/generator.html">Generators</a></li>
+            <li><a href="dev/shared.html">Shared routines</a></li>
+            <li><a href="dev/extended.html">Extended sprites</a></li>
+            <li><a href="dev/cluster.html">Cluster sprites</a></li>
+            <li><a href="dev/minor_extended.html">Minor extended sprites</a></li>
+            <li><a href="dev/bounce.html">Bounce sprites</a></li>
+            <li><a href="dev/smoke.html">Smoke sprites</a></li>
+            <li><a href="dev/score.html">Score sprites</a></li>
+            <li><a href="dev/spinning_coins.html">Spinning coin sprites</a></li>
+        </ul>
+    </div>
+    <p><a href="#top">[Back to top]</a></p>
+    <hr>
+    <div id="features">
+        <h2>Features <a href="#features" class="link">[Link]</a></h2>
+        <p>PIXI is a sprite insertion tool made to allow more dynamic sprite usage, space savings and more SA-1 compatibility. Despite this, it is almost fully compatible with sprites written for older SpriteTools, save for the fact that Asar is now used as the assembler.</p>
+        <ul>
+            <li><b>Softcoded</b><br>
+                The old sprite tool inserted its code as a preassembled byte array and then sets up the calls (hijacks) for it. Put simply, it was a nightmare to read and figure out what hijacks it applied. Here, the applied asm file is available for editing. The tool only generates the binary tables that are included by the asm. So you can basically look at the code and edit it (to some extent) as you like.<br>
+                Additionally, you can create two folders called ExtraHijacks and ExtraDefines that the tool will apply after running all the sprites, thus allowing you to insert arbitrary asm alongside what Pixi already inserts.
+            </li>
+            <li><b>Dynamic SA-1 support</b><br>
+                The tool's code is 100% SA-1 hybrid. It also provides an asm file with all SA-1 defines that will be default included in every sprite, so you don't have to stick that annoying read1() check for sa-1 at the beginning of every sprite. For all sprite relevant addresses, there exists a define. More info on that is in the readme.
+            </li>
+            <li><b>GPS Interface</b><br>
+                The user interface is basically the same as p4plus2's GPS for 2 reasons:<br>
+                1. It's simple, easy and comfortable to use.<br>
+                2. It's a lot more comfortable to work with multiple tools if they all use the same interface.
+            </li>
+            <li><b>Shared Routines</b><br>
+                Pixi includes (as GPS) a folder listing all the shared routines that can be used in the sprites inserted with the tool. Calling a routine is simply achieved by doing <icode>%RoutineName()</icode>.<br>
+                Most of the routines have some included documentation on how to use them correctly in their respective asm files.<br>
+                These routines will only be inserted once no matter how many times they're used, and will only be inserted if they're used. This reduces code size by quite a large margin.
+            </li>
+            <li><b>Asar Only</b><br>
+                Pixi only accepts sprites that are written using Asar syntax. No xkas or TRASM.
+            </li>
+            <li><b>Sprite Tool support</b><br>
+                The tool basically works the same as sprite tool and might be able to be applied on top of a ROM where Sprite Tool has already been used. <br>
+                This process however, is unreliable, as Pixi will attempt to remove all Sprite Tool code beforehand (because of conflicting hijacks) and it may fail at doing so.<br>
+                If it succeds however, it will of course remove all the sprites.
+            </li>
+            <li><b>Per Level Sprites</b><br>
+                Per level sprites are a feature that lets you define a sprite as only "available" only in 1 level and 1 level only. You can have up to 0x10 (16) sprites per each level.<br>
+                The 16 slots from B0-BF can be freely assigned across all $200 levels. In the old version of per level sprites, B0-BF were only available as per level slots but the rewrite allows for those slots to be used by normal sprites aswell.<br>
+                This way, if you have both a global sprite in slot B0 and some per level sprite in the same slot, Pixi will automatically pick the global one if no per level sprite was defined in that specific level and the opposite otherwise.<br>
+                Please note that per level sprites are quite heavy on used ROM space, as they can take up to 2 banks.
+                Likewise, you can also have a shooter, that shoots sprite B0, which will spawn a sprite depending on the level.<br>
+                This feature can be particularly useful for collabs</br>
+            </li>
+            <li><b>CFG Editor</b><br>
+                The CFG Editor that comes with Pixi allows you to freely edit cfg/json files to your liking. It helps with creating custom sprite displays and collections.
+            </li>
+        </ul>
+    </div>
+    <p><a href="#top">[Back to top]</a></p>
+    <hr>
+    <div>
+        <h2 id="credits">Credits</h2>
+        <ul>
+            <li>Original author:</li>
+            <ul>
+                <li>JackTheSpades</li>
+            </ul>
+            <li>Maintainers:</li>
+            <ul>
+                <li>JackTheSpades (2016-2018)</li>
+                <li>Tattletale (2018-2020)</li>
+                <li>Atari2.0 (2020-current)</li>
+            </ul>
+            <li>With special thanks to:</li>
+            <ul>
+                <li>Akaginite, for a lot of optimized routines, MeiMei's code and the revamped per-level sprite system</li>
+                <li>p4plus2, for GPS, from which the core system of the tool was taken from.</li>
+            </ul>
+            <li>Other contributors:</li>
+            <ul>
+                <li>Blind Devil (bugfixes)</li>
+                <li>boldowa (bugfixes and some GIEPY asm code)</li>
+                <li>dtothefourth (CFG Editor updates)</li>
+                <li>lx5 (misc sprites additions)</li>
+                <li>MarioE (shared routines)</li>
+                <li>RPGHacker (bugfixes)</li>
+                <li>Sillymel (bugfixes)</li>
+                <li>Telinc1 (bugfixes)</li>
+                <li>Vitor Vilela (SA-1)</li>
+            </ul>
+            <li>Asar authors:</li>
+            <ul>
+                <li>Alcaro</li>
+                <li>RPG Hacker</li>
+                <li>randomdude999</li>
+                <li>p4plus2</li>
+            </ul>
+            <li>Documentation by:</li>
+            <ul>
+                <li>lx5</li>
+                <li>Atari2.0</li>
+            </ul>
+        </ul>
+        <p><a href="#top">[Back to top]</a></p>
+    </div>
+</body>
