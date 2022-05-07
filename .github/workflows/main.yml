@@ -1,0 +1,12 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+jobs:
+  alert-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Notify server of the push
+        run: curl -X POST -d "secret=${{ secrets.PUSH_ACTION_KEY }}" https://www.atarismwc.dev/pixi-docs-push/index.php
