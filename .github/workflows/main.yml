@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Notify server of the push
-        run: curl -X POST -d "secret=${{ secrets.PUSH_ACTION_KEY }}" https://www.atarismwc.dev/pixi-docs-push/index.php
+        run: curl -X POST -d "secret=${{ secrets.PUSH_ACTION_KEY }}" https://www.spritetoolsuperdelux.dev/pixi-docs-push/index.php
